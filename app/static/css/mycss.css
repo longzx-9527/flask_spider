@@ -1,0 +1,46 @@
+body {
+    color: #505050;
+    line-height: 1.75em;
+    background: #ebebeb;
+    position: relative;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+  }
+  
+#footer{
+    margin-top: 20px;
+    min-width: 100%;
+    float: left;
+    background: #3C3C3C;
+}
+#footer .footer-c{
+    width: 1190px;
+    margin: 0 auto;
+}
+#footer .footer-c ul{
+    width: 1190px;
+    text-align: center;
+    float: left;
+    margin: 0 auto;
+    /*background: blue;*/
+}
+#footer .footer-c ul li{
+    display: inline-block;
+    margin: 20px;
+}
+#footer .footer-c ul li a {
+    color: #fff;
+    font-size: 14px;
+}
+#footer .footer-c ul li a:hover{
+    color: #ff6600;
+}
+#footer .footer-c p{
+    font-size: 12px;
+    color: #C2C2C2;
+    text-align: center;
+    padding-bottom: 15px;
+}
+#footer .footer-c p a{
+    color: #fff;
+}

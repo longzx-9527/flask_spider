@@ -1,0 +1,55 @@
+{% extends "base_login.html" %}
+
+<!--定义内容和边栏-->
+{% block content %}
+<br>
+<br>
+<br>
+
+ <div class="container">
+ <div class="row">
+ <div class="col-md-2">
+ </div>
+ <div class="col-md-9">
+ <br>
+ <br>
+
+
+<form class="form-horizontal register" action={{url_for('main.login_in')}} method="post" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="email">用户名称</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="email" name="email" type="text" value="{{ email }}" placeholder="请输入email" />
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="password">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="password" name="password" type="password" placeholder="请输入密码"/>
+            {% for message in get_flashed_messages(with_categories=True) %}
+            <p color='red'>{{ message[1] }}</p>
+            {% endfor %}
+            <input  name="remember_me" type="checkbox" value='True'  />下次自动登录
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-6">
+            <input class="form-control" type="submit" value="登录"/>
+        </div>
+    </div>
+</form>
+</div>
+<div class="col-md-1">
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript" src={{url_for('static', filename='js/myjs.js',_external=True)}}></script>
+{% endblock %}

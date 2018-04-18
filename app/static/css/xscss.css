@@ -1,0 +1,114 @@
+body {
+    background-color: #E9FAFF;
+    color: #555;
+    font-family: 宋体;
+    font-size: 14px;
+    margin: 0 auto;
+}
+.box_con {
+    border: 2px solid #88C6E5;
+    overflow: hidden;
+    width: 976px;
+    margin: 10px auto;
+    font-size: 16px;
+}
+.box_cons {
+    border: 2px solid #88C6E5;
+    overflow: hidden;
+    width: 100px auto;
+    margin: 10px auto;
+}
+.box_zhangj{
+    border: 2px solid #88C6E5;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px auto;
+}
+.box_section{
+    border-top: 2px solid #88C6E5;
+    border-bottom: 2px solid #88C6E5;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px auto;
+}
+#list {
+    padding: 2px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+#list dl {
+    float: left;
+    overflow: hidden;
+    padding-bottom: 1px;
+    margin: auto;
+}
+#list dt {
+    background: none repeat scroll 0 0 #C3DFEA;
+    display: inline;
+    float: left;
+    font-size: 18px;
+    line-height: 28px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    margin: auto auto 5px;
+    padding: 5px 10px;
+}
+#list dd {
+    border-bottom: 1px dashed #CCC;
+    display: inline;
+    float: left;
+    height: 25px;
+    line-height: 200%;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-align: left;
+    text-indent: 10px;
+    vertical-align: middle;
+    width: 33%;
+}
+
+/*  */
+
+#footererror{
+    margin-top: 20px;
+    min-width: 100%;
+    float: left;
+    position: fixed;
+    bottom: 0;
+    background: #3C3C3C;
+}
+#footererror .footererror-c{
+    width: 1190px;
+    margin: 0 auto;
+}
+#footererror .footererror-c ul{
+    width: 1190px;
+    text-align: center;
+    float: left;
+    margin: 0 auto;
+    /*background: blue;*/
+}
+#footererror .footererror-c ul li{
+    display: inline-block;
+    margin: 20px;
+}
+#footererror .footererror-c ul li a {
+    color: #fff;
+    font-size: 14px;
+}
+#footererror .footererror-c ul li a:hover{
+    color: #ff6600;
+}
+#footererror .footererror-c p{
+    font-size: 12px;
+    color: #C2C2C2;
+    text-align: center;
+    padding-bottom: 15px;
+}
+#footererror .footererror-c p a{
+    color: #fff;
+}

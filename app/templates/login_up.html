@@ -1,0 +1,75 @@
+{% extends "base_login.html" %}
+
+<!--定义内容和边栏-->
+{% block content %}
+<br>
+<br>
+<br>
+
+ <div class="container">
+ <div class="row">
+ <div class="col-md-2">
+ </div>
+ <div class="col-md-9">
+ <br>
+ <br>
+
+
+<form class="form-horizontal register" action={{url_for('main.login_up')}} method="post" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="username">登录名称</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="username" name="username" type="text" placeholder="登录用户名，不少于4个字符"  />
+            {% for message in get_flashed_messages(with_categories=True) %}
+            <small class="warning">{{ message[1] }}</small>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="nickname">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="nickname" name="nickname" type="text" placeholder="即昵称，不少于2个字符"  />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="password" >密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="password" name="password" type="password" placeholder="至少8位，必须包含字母、数字、特殊字符"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="password">确认密码</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="password" name="password" type="password"  placeholder="请输入确认密码"/>
+        </div>
+    </div>    <div class="form-group">
+        <label class="col-lg-2 control-label" for="phone">手机号码</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="phone" name="phone" type="text" placeholder="电话号码为11位" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" for="email">邮箱账号</label>
+        <div class="col-lg-6">
+            <input class="form-control" id="email" name="email" type="text" placeholder="需要通过邮件激活帐户"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-4">
+            <input class="form-control" type="submit" value="注册"/>
+        </div>
+    </div>
+</form>
+</div>
+<div class="col-md-1">
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript" src={{url_for('static', filename='js/myjs.js',_external=True)}}></script>
+{% endblock %}

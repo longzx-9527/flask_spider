@@ -1,0 +1,84 @@
+[2018-04-18 21:40:40,498 spider_tools.py:77] - main() >>>>>>>>>>>>>>>>>>> 
+[2018-04-18 21:40:40,498 spider_tools.py:78] - main() 参数：('圣墟',) 
+[2018-04-18 21:40:42,512 connectionpool.py:208] - Starting new HTTP connection (1): zhannei.baidu.com 
+[2018-04-18 21:40:45,951 connectionpool.py:208] - Starting new HTTP connection (1): zhannei.baidu.com 
+[2018-04-18 21:40:46,494 connectionpool.py:396] - http://zhannei.baidu.com:80 "GET /cse/search?s=920895234054625192&q=%E5%9C%A3%E5%A2%9F HTTP/1.1" 200 None 
+[2018-04-18 21:40:46,623 sbcharsetprober.py:119] - MacCyrillic confidence = 0.021439632151179847, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:46,749 charsetgroupprober.py:100] - utf-8  confidence = 0.99 
+[2018-04-18 21:40:46,749 charsetgroupprober.py:100] - SHIFT_JIS Japanese confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - EUC-JP Japanese confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - GB2312 Chinese confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - EUC-KR Korean confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - CP949 Korean confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - Big5 Chinese confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - EUC-TW Taiwan confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - windows-1251 Russian confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - KOI8-R Russian confidence = 0.01 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:100] - ISO-8859-5 Russian confidence = 0.0007445414187372378 
+[2018-04-18 21:40:46,750 charsetgroupprober.py:97] - MacCyrillic not active 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - IBM866 Russian confidence = 0.07302596428307735 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - IBM855 Russian confidence = 0.04381725215925389 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - ISO-8859-7 Greek confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - windows-1253 Greek confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - ISO-8859-5 Bulgairan confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - windows-1251 Bulgarian confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - TIS-620 Thai confidence = 0.04498104067274472 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - ISO-8859-9 Turkish confidence = 0.5056927849538179 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - windows-1255 Hebrew confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - windows-1255 Hebrew confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - windows-1255 Hebrew confidence = 0.0 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - utf-8  confidence = 0.99 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - SHIFT_JIS Japanese confidence = 0.01 
+[2018-04-18 21:40:46,751 charsetgroupprober.py:100] - EUC-JP Japanese confidence = 0.01 
+[2018-04-18 21:40:46,752 charsetgroupprober.py:100] - GB2312 Chinese confidence = 0.01 
+[2018-04-18 21:40:46,752 charsetgroupprober.py:100] - EUC-KR Korean confidence = 0.01 
+[2018-04-18 21:40:46,752 charsetgroupprober.py:100] - CP949 Korean confidence = 0.01 
+[2018-04-18 21:40:46,752 charsetgroupprober.py:100] - Big5 Chinese confidence = 0.01 
+[2018-04-18 21:40:46,752 charsetgroupprober.py:100] - EUC-TW Taiwan confidence = 0.01 
+[2018-04-18 21:40:48,838 connectionpool.py:208] - Starting new HTTP connection (1): www.qu.la 
+[2018-04-18 21:40:49,706 connectionpool.py:396] - http://www.qu.la:80 "GET /book/24868/ HTTP/1.1" 301 152 
+[2018-04-18 21:40:49,710 connectionpool.py:824] - Starting new HTTPS connection (1): www.qu.la 
+[2018-04-18 21:40:51,212 connectionpool.py:396] - https://www.qu.la:443 "GET /book/24868/ HTTP/1.1" 200 148755 
+[2018-04-18 21:40:53,513 sbcharsetprober.py:119] - ISO-8859-5 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,543 sbcharsetprober.py:119] - MacCyrillic confidence = 0.022522499270188366, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,627 sbcharsetprober.py:119] - ISO-8859-7 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,648 sbcharsetprober.py:119] - windows-1253 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,674 sbcharsetprober.py:119] - ISO-8859-5 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,697 sbcharsetprober.py:119] - windows-1251 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,723 sbcharsetprober.py:119] - TIS-620 confidence = 0.02088918509058682, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,816 sbcharsetprober.py:119] - windows-1255 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,839 sbcharsetprober.py:119] - windows-1255 confidence = 0.0, below negative shortcut threshhold 0.05 
+[2018-04-18 21:40:53,919 charsetgroupprober.py:100] - utf-8  confidence = 0.99 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - SHIFT_JIS Japanese confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - EUC-JP Japanese confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - GB2312 Chinese confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - EUC-KR Korean confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - CP949 Korean confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - Big5 Chinese confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - EUC-TW Taiwan confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - windows-1251 Russian confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - KOI8-R Russian confidence = 0.01 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - ISO-8859-5 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - MacCyrillic not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - IBM866 Russian confidence = 0.08318697543076992 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - IBM855 Russian confidence = 0.07269156500208435 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - ISO-8859-7 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - windows-1253 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - ISO-8859-5 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - windows-1251 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:97] - TIS-620 not active 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - ISO-8859-9 Turkish confidence = 0.26587781792750725 
+[2018-04-18 21:40:53,920 charsetgroupprober.py:100] - windows-1255 Hebrew confidence = 0.0 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:97] - windows-1255 not active 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:97] - windows-1255 not active 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - utf-8  confidence = 0.99 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - SHIFT_JIS Japanese confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - EUC-JP Japanese confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - GB2312 Chinese confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - EUC-KR Korean confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - CP949 Korean confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - Big5 Chinese confidence = 0.01 
+[2018-04-18 21:40:53,921 charsetgroupprober.py:100] - EUC-TW Taiwan confidence = 0.01 
+[2018-04-18 21:41:03,118 connectionpool.py:208] - Starting new HTTP connection (1): www.qu.la 
+[2018-04-18 21:41:03,960 connectionpool.py:396] - http://www.qu.la:80 "GET /book/24868/10664976.html HTTP/1.1" 301 165 
+[2018-04-18 21:41:03,965 connectionpool.py:824] - Starting new HTTPS connection (1): www.qu.la 

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{{super()}}
+<link href="{{url_for('static',filename='css/xscss.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+ <!-- 搜索栏 -->
+ <div class="container-fluid">
+    <div class="row">
+      <div class=" col-md-offset-7 col-md-4">
+        <form class="navbar-form navbar-right" role="search" action="/book/search/">
+            <div class="form-group">
+                <input name='f_name' type="text" class="form-control" placeholder="输入你喜欢的小说名字">
+            </div>
+            <button type="submit" class="btn btn-primary">查找你喜欢的小说吧</button>
+        </form>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+</div>
+<!-- 搜索栏结束 -->
+<div class="box_section">
+  <!-- 文章主题开始 -->
+  <div class="container-fluid">
+      <div class="row">
+        <!-- row begin -->
+        
+        <!-- 左边栏 -->
+        <div class=" col-md-3 ">
+            <br>
+            <div class="box_cons">
+                <div class="panel panel-success">
+                    <div class="panel-heading">热门小说</div>
+                    <ul class="list-group">
+                        {% for fiction in fictions %}
+                        <li class="list-group-item"><a href="/book/list/{{fiction.fiction_id}}" class="pull-left">{{fiction.fiction_name}}</a><p class="text-right">{{fiction.fiction_author}}</p></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>  
+        <!--右边栏  -->
+        <div class="col-md-8">
+            <div class="container-fluid">
+                <hr>
+                {% for fiction in fictions %}
+                {% if loop.index0 % 2 == 0 %}
+                <div class="row">
+                {% endif %}
+                    <div class="col-md-6 pull-left">
+                        <div class="media">
+                            <a href="#" class="pull-left"><img src="{{fiction.fiction_img}}" width="100px" height="160px" /></a>
+                            <div class="media-body">
+                                <div class="pull-left"><a href="/book/list/{{fiction.fiction_id}}">{{fiction.fiction_name}}</a></div>
+                                <div class="pull-right">{{fiction.fiction_author}}</div>
+                                <hr>
+                                {{fiction.fiction_comment}}...
+                            </div>
+                        </div>
+                    </div>
+                {% if loop.index % 2 == 0 or loop.last %}   
+                </div>
+                <hr>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-1"></div>
+        <!-- row end -->
+  
+      </div>
+    </div>
+    <!-- 文章主题结束 -->
+</div>
+    {{super()}}
+    {% endblock %}
+
+   

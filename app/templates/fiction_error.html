@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{{super()}}
+<link href="{{url_for('static',filename='css/xscss.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+ <!-- 搜索栏 -->
+ <div class="container-fluid">
+    <div class="row">
+      <div class=" col-md-offset-7 col-md-4">
+        <form class="navbar-form navbar-right" role="search" action="/book/search/">
+            <div class="form-group">
+                <input name='f_name' type="text" class="form-control" placeholder="输入你喜欢的小说名字">
+            </div>
+            <button type="submit" class="btn btn-primary">查找你喜欢的小说吧</button>
+        </form>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+</div>
+
+
+<div class="box_section">
+        <!-- 文章主题开始 -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-md-12 ">
+                <p class="text-center">{{message}}</p>
+            </div>
+        </div>
+    </div>
+</div>      
+
+<div id="footererror" >
+        <div class="footererror-c">
+            <div class="footererror-nav">
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">广告服务</a></li>
+                    <li><a href="#">免责声明</a></li>
+                </ul>
+            </div>
+            <p>© 2012-2016 jqhtml.com · 湘ICP备16001111号-1  · 托管于 阿里云 & 又拍云</p>
+            <p>
+            <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "//hm.baidu.com/hm.js?8319b3b0fd09fd3d636159d4e490cdd8";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            </script>
+            </p>
+            <script>
+          // SyntaxHighlighter.defaults['html-script'] = false;
+          SyntaxHighlighter.all();
+          </script>
+        </div>
+    </div>
+{% endblock %}

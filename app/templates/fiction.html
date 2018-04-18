@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block styles %}
+{{super()}}
+<link href="{{url_for('static',filename='css/xscss.css',_external=True)}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- row begin -->
+        <div class="col-md-offset-1 col-md-9 col-md-offset-1">
+            <div class="content_read">
+                <div class="box_con">
+                    <div class="bookname">
+                        <h1><p class="text-center">{{fiction_name}}</p></h1>
+                    </div>
+                    <div class="bottem1">
+                        <p class="text-center">
+                        <a id="pager_prev" href="/book/fiction/?id={{f_id}}&f_url={{fiction_pre}}" target="_top" class="pre">上一章</a>
+                        ← 
+                        <a id="pager_current" href="/book/list/{{f_id}}" target="_top" title="" class="back">章节列表</a>
+                        → 
+                        <a id="pager_next" href="/book/fiction/?id={{f_id}}&f_url={{fiction_next}}" target="_top" class="next">下一章</a>
+                        </p>
+                    </div>
+                    <div class="lm"></div>
+                    {{fiction_content|safe}}
+                </div>
+            </div>
+        </div>                              
+    <!-- row end -->
+    </div>
+</div>
+
+{{super()}}
+{% endblock%}

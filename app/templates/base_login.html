@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html"  %}
+
+{% block title %}登录注册{% endblock title %}
+
+{% block meta %}
+	{{ supper() }}
+	<meta charset="utf-8">
+	<meta name="desription" content="自己的博客">
+	<meta name="keyword" content="python,博客">
+{% endblock meta %}
+{% block styles %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href={{ url_for('static',filename='css/mycss.css',_external=True)}} >
+	<style>
+	.mybgd {
+    background-color:white;
+	}
+	</style>
+} 
+{% endblock %}
+
+<!--导航栏部分-->
+{% block navbar %}
+		<nav class="navbar navbar-inverse  navbar-fixed-top">
+		<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">个人博客</a>
+	    </div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+	     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li><a href={{ url_for('main.index') }}>首页</a></li>
+	        <li><a href={{ url_for('main.login_in') }}>登录</a></li>
+	        <li><a href={{ url_for('main.login_up') }}>注册</a></li>
+	        <li><a href="#">关于</a></li>
+	      </ul>
+	    </div>
+	  </div><!-- /.container-fluid -->
+	</nav>
+{% endblock navbar %}
+

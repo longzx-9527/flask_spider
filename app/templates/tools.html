@@ -1,0 +1,5 @@
+{% macro get_error(name) %}
+{% for error in form.{{name}}.errors %}
+    {{error}}
+{% endfor %}
+{% endmacro %}
