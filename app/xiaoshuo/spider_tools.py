@@ -12,6 +12,8 @@ from time import ctime, sleep, time
 import pymysql
 import requests
 from requests.exceptions import RequestException
+from app.models import Fiction, Fiction_Content, Fiction_Lst
+from app import db
 
 #请求头
 headers = {}
@@ -46,95 +48,73 @@ agents = [
 ]
 
 
-def get_one_page(url, proxies=None):
+def get_one_page(url, proxies=None, sflag=1):
     #获取给定的url页面
     while True:
         try:
             headers['User-Agent'] = choice(agents)
             # 控制爬取速度
-            # sleep(randint(1, 3))
+            if sflag:
+                print('放慢下载速度。。。。。。')
+                sleep(randint(1, 3))
+
             print('正在下载:', url)
             if proxies:
-                # r = requests.get(url, headers=headers, timeout=5, proxies=proxies)
-                r = requests.get(url)
+                r = requests.get(
+                    url, headers=headers, timeout=5, proxies=proxies)
             else:
                 r = requests.get(url, headers=headers, timeout=5)
-        except RequestException as r:
+
+        except Exception as r:
+            print('errorinfo:', r)
             continue
         else:
             if r.status_code == 200:
                 r.encoding = r.apparent_encoding
+                print('爬取成功！！！')
                 return r.text
             else:
                 continue
 
 
-def get_db(host='localhost', user='lzx', passwd='123', database='blog'):
-    try:
-        db = pymysql.connect(
-            host=host,
-            user=user,
-            password=passwd,
-            database=database,
-            charset='utf8')
-    except pymysql.err.OperationalError as e:
-        print('error:', e)
-        raise Exception('connect db error')
-    return db
-
-
-def get_cursor(db, cursor=None):
-    if cursor:
-        return db.cursor(cursor=cursor)
+def insert_fiction(fiction_name, fiction_id, fiction_real_url, fiction_img,
+                   fiction_author, fiction_comment):
+    fiction = Fiction().query.filter_by(fiction_id=fiction_id).first()
+    if fiction is None:
+        fiction = Fiction(
+            fiction_name=fiction_name,
+            fiction_id=fiction_id,
+            fiction_real_url=fiction_real_url,
+            fiction_img=fiction_img,
+            fiction_author=fiction_author,
+            fiction_comment=fiction_comment)
+        db.session.add(fiction)
+        db.session.commit()
     else:
-        return db.cursor()
+        print('记录已存在，无需下载')
 
 
-def sql_executemany(cur, sql, lst):
-    # 对于插入多条操作
-    return cur.executemany(sql, lst)
+def insert_fiction_lst(fiction_name, fiction_id, fiction_lst_url,
+                       fiction_lst_name, fiction_real_url):
+    fl = Fiction_Lst().query.filter_by(
+        fiction_id=fiction_id, fiction_lst_url=fiction_lst_url).first()
+    if fl is None:
+        fl = Fiction_Lst(
+            fiction_name=fiction_name,
+            fiction_id=fiction_id,
+            fiction_lst_url=fiction_lst_url,
+            fiction_lst_name=fiction_lst_name,
+            fiction_real_url=fiction_real_url)
+        db.session.add(fl)
+        db.session.commit()
+    else:
+        print('此章节已存在！！！')
 
 
-def insert_one(sql, args):
-    sql = sql % args
-    sql_execute(sql)
-
-
-def insert_many(sql, args):
-    db = get_db()
-    cursor = get_cursor(db)
-    cursor.executemany(sql, args)
-    db.commit()
-    cursor.close()
-    db.close()
-
-
-def select_fiction_one(sql):
-    db = get_db()
-    with db.cursor() as cursor:
-        cnt = cursor.execute(sql)
-        lst = cursor.fetchone()
-    db.close()
-    return cnt, lst
-
-
-def select_fiction_many(sql):
-    db = get_db()
-    with db.cursor() as cursor:
-        cursor.execute(sql)
-        lst = cursor.fetchall()
-    db.close()
-    return lst
-
-
-def sql_execute(sql):
-    db = get_db()
-    try:
-        with db.cursor() as cursor:
-            cursor.execute(sql)
-            db.commit()
-    except Exception as e:
-        print('sql=', sql)
-        raise Exception('db error')
-    finally:
-        db.close()
+def insert_fiction_content(fiction_url, fiction_content, fiction_id):
+    fc = Fiction_Content(
+        fiction_id=fiction_id,
+        fiction_content=fiction_content,
+        fiction_url=fiction_url)
+    db.session.add(fc)
+    db.session.commit()
