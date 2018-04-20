@@ -7,6 +7,7 @@ from ..mylogger import logger
 from app import pages
 import requests
 import markdown
+from .mdextension import CodeExtension
 
 
 @main.route('/')
@@ -45,7 +46,7 @@ def get_article(path):
     page = pages.get_or_404(path)
     with open('/home/longzx/src/study/flask/app/pages/我的文章.md') as f:
         content = f.read()
-    content = markdown.markdown(content)
+    content = markdown2.markdown(content)
     return render_template('article.html', page=page, content=content)
 
 
@@ -58,7 +59,11 @@ def wrarticle():
         print('article=', artitle_content)
         print('title', artitle_title)
         print('type=', artitle_type)
-        artitle_content = markdown.markdown(artitle_content)
+        # artitle_content = markdown2.markdown(artitle_content)
+        configs = {}
+        myext = CodeExtension(configs=configs)
+        artitle_content = markdown.markdown(
+            artitle_content, extensions=[myext])
         print('article=', artitle_content)
         page = None
         return render_template(

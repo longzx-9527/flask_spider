@@ -44,3 +44,7 @@ body {
 #footer .footer-c p a{
     color: #fff;
 }
+p code {  
+    white-space: normal;  
+    word-break: break-all;  
+} 
