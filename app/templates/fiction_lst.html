@@ -30,6 +30,11 @@
                         <div class="media-body">
                             <div ><h3><b>{{fiction.fiction_name}}</b></h3></div>
                             <div ><p>作&nbsp;&nbsp;&nbsp;&nbsp;者：{{fiction.fiction_author}}</p></div>
+                            <div >
+                                <p class="pull-left">{{fiction.update}} &nbsp;&nbsp;&nbsp;&nbsp;<a href="/book/fiction/?id={{fiction.fiction_id}}&f_url={{fiction.new_url}}">{{fiction.new_content}}</a></p>
+                                <a href="/update/fiction/?f_url={{fiction.fiction_real_url}}&f_name={{fiction.fiction_name}}" class="btn btn-primary btn-xs pull-right" role="button">更新</a>
+                            </div>
+                            <br>
                             <hr>
                             {{fiction.fiction_comment}}...
                         </div>

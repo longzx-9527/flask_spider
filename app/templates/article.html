@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content%}
+ 
+<div class="container-fluid">
+        <div class="row">
+        <!--左边栏  -->
+          <div class="col-md-8">
+    
+             <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="#">技术杂谈</a></li>
+                <li class="active">{{page.title}}</li>
+            </ol>
+    
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{{page.title}}</h3>
+                    <p >
+                      <span ><a href="#"><span class="glyphicon glyphicon-user"></span>{{page.author}}&nbsp;&nbsp;</a></span>
+                      <span class="glyphicon glyphicon-time"></span>{{page.date}}&nbsp;&nbsp;
+                      <span class="glyphicon glyphicon-eye-open"></span>浏览(20)&nbsp;&nbsp;
+                      <span ><a href="#"><span class="glyphicon glyphicon-star"></span>收藏(20)&nbsp;&nbsp;</a></span>
+                      <span ><a href="#"><span class="glyphicon glyphicon-comment"></span>评论(20)&nbsp;&nbsp;</a></span>
+                    </p>
+                    <hr>
+                    <!-- 段落开始 -->
+                    <span>
+                        <article id="110" class="post">
+                                {{content|safe}}
+                            </section>
+                            <hr>
+                        </article>
+                    </span>
+                       <!-- 评论部分 -->
+                    <form role="form">
+                        <div class="form-group">
+                        <label for="name">发表你的评论吧</label>
+                        <hr>
+                        <input type="text" class="form-control" id="name" placeholder="请输入昵称">
+                        </div>
+                        <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="请输入邮箱">
+                        </div>
+                        <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="说点什么吧 "></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">发表评论</button>
+                        </div>
+                    </form>
+                    <!-- 段落结束 -->
+                    <br>
+                    <br>
+                </div>
+              </div>
+    
+           
+              <br>
+              <br>
+    
+          </div>
+          <!--右边栏  -->
+          <div class="col-md-4">
+            <div class="list-group">
+              <a href="#" class="list-group-item active">猜你喜欢</a>
+    
+                <div class="list-group-item">
+                  <div class="media">
+                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
+                    <div class="media-body">
+                       <p>Python爬虫实战一之爬取糗事百科段子</p>
+                      <p>
+                        2018.1.22 评论(2018)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="list-group-item">
+                  <div class="media">
+                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
+                    <div class="media-body">
+                       <p>Python爬虫实战一之爬取糗事百科段子</p>
+                      <p>
+                        2018.1.22 评论(2018)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="list-group-item">
+                  <div class="media">
+                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
+                    <div class="media-body">
+                       <p>Python爬虫实战一之爬取糗事百科段子</p>
+                      <p>
+                        2018.1.22 评论(2018)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="list-group-item">
+                  <div class="media">
+                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
+                    <div class="media-body">
+                       <p>Python爬虫实战一之爬取糗事百科段子</p>
+                      <p>
+                        2018.1.22 评论(2018)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                
+            </div>
+          </div>
+    
+    
+    
+        </div>
+      </div>
+    
+
+    {{super()}}
+{% endblock %}

@@ -43,6 +43,8 @@ class Config:
     
     SQLAlchmey采用了类似于Java里Hibernate的数据映射模型，
     """
+    FLATPAGES_AUTO_RELOAD = True
+    FLATPAGES_EXTENSION = '.md'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'can you guess it'
     DEBUG = True
     # sqlalchemy两个主要配置

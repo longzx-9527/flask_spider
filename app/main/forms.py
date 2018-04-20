@@ -54,6 +54,31 @@ class LoginForm(FlaskForm):
         render_kw={
             "placeholder": '密码必须大于6个字符',
         })
+
+    remember_me = BooleanField(label='remember_me', default=False)
+    submit = SubmitField(label='登录')
+
+
+class RegisterForm(FlaskForm):
+    username = StringField(
+        label='用户昵称',
+        validators=[
+            DataRequired("昵称必填"),
+            Length(min=6, max=20, message="用户名必须介于6-20个字符")
+        ],
+        render_kw={"placeholder": "用户名必须介于6-20个字符"})
+    password = PasswordField(
+        label="用户密码",
+        validators=[DataRequired("密码必填！")],
+        render_kw={
+            "placeholder": '密码必须大于6个字符',
+        })
+    password2 = PasswordField(
+        label="用户密码",
+        validators=[DataRequired("密码必填！")],
+        render_kw={
+            "placeholder": '再次输入',
+        })
     email = StringField(
         '邮箱',
         validators=[email(message="邮箱格式不正确！")],
@@ -62,5 +87,4 @@ class LoginForm(FlaskForm):
         label='日期',
         validators=[DataRequired('日期格式不正确')],
         render_kw={"placeholder": "日期如：2018-01-01"})
-    remember_me = BooleanField(label='remember_me', default=False)
-    submit = SubmitField(label='登录')
+    submit = SubmitField(label='注册')

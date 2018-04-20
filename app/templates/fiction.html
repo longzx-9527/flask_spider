@@ -20,8 +20,10 @@
                         ← 
                         <a id="pager_current" href="/book/list/{{f_id}}" target="_top" title="" class="back">章节列表</a>
                         → 
+                        {% if fiction_next %}
                         <a id="pager_next" href="/book/fiction/?id={{f_id}}&f_url={{fiction_next}}" target="_top" class="next">下一章</a>
-                        </p>
+                        {% endif %}
+                    </p>
                     </div>
                     <div class="lm"></div>
                     {{fiction_content|safe}}

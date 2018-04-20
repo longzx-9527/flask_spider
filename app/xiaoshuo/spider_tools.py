@@ -107,8 +107,6 @@ def insert_fiction_lst(fiction_name, fiction_id, fiction_lst_url,
             fiction_real_url=fiction_real_url)
         db.session.add(fl)
         db.session.commit()
-    else:
-        print('此章节已存在！！！')
 
 
 def insert_fiction_content(fiction_url, fiction_content, fiction_id):
@@ -117,4 +115,13 @@ def insert_fiction_content(fiction_url, fiction_content, fiction_id):
         fiction_content=fiction_content,
         fiction_url=fiction_url)
     db.session.add(fc)
+    db.session.commit()
+
+
+def update_fiction(fiction_id, update_time, new_content, new_url):
+    fiction = Fiction().query.filter_by(fiction_id=fiction_id).first()
+    fiction.update = update_time
+    fiction.new_content = new_content
+    fiction.new_url = new_url
+    db.session.add(fiction)
     db.session.commit()

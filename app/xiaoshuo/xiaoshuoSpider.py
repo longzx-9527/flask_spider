@@ -7,7 +7,7 @@ import requests
 import sys
 from bs4 import BeautifulSoup
 from pymysql.err import ProgrammingError
-from app.xiaoshuo.spider_tools import get_one_page, insert_fiction, insert_fiction_content, insert_fiction_lst
+from app.xiaoshuo.spider_tools import get_one_page, update_fiction, insert_fiction, insert_fiction_content, insert_fiction_lst
 from app.models import Fiction_Lst, Fiction_Content, Fiction
 
 
@@ -49,14 +49,24 @@ def get_fiction_list(fiction_name, fiction_url, flag=1):
     fiction_html = get_one_page(fiction_url, sflag=flag)
     soup = BeautifulSoup(fiction_html, 'html5lib')
     dd_lst = soup.find_all('dd')
+    updatetime = str(soup.find(id='info').find_all('p')[-2]).strip('<p>/')
+    new_content = soup.find(id="info").find_all('p')[-1].a.text
+    fiction_id = fiction_url.split('/')[-2]
+    new_url = soup.find(id="info").find_all('p')[-1].a['href'].strip('.html')
+    # 更新最新章节
+    update_fiction(
+        fiction_id=fiction_id,
+        update_time=updatetime,
+        new_content=new_content,
+        new_url=new_url)
+
     fiction_lst = []
-    fiction_url_tmp = fiction_url.split('/')[-2]
     for item in dd_lst[12:]:
         fiction_lst_name = item.a.text.strip()
         fiction_lst_url = item.a['href'].split('/')[-1].strip('.html')
         fiction_real_url = fiction_url + fiction_lst_url + '.html'
-        lst = (fiction_name, fiction_url_tmp, fiction_lst_url,
-               fiction_lst_name, fiction_real_url)
+        lst = (fiction_name, fiction_id, fiction_lst_url, fiction_lst_name,
+               fiction_real_url)
         fiction_lst.append(lst)
     return fiction_lst
 
@@ -89,7 +99,6 @@ def save_fiction_lst(fiction_lst):
         print('此小说已存在！！，无需下载')
         return 1
     for item in fiction_lst:
-        print('此章节列表不存在，需下载')
         insert_fiction_lst(*item)
 
 
@@ -112,3 +121,12 @@ def down_fiction_lst(f_name):
 def down_fiction_content(f_url):
     get_fiction_content(f_url, flag=0)
     print('下载章节完成！！')
+
+
+def update_fiction_lst(f_name, f_url):
+    # 1.获取小说目录列表
+    fiction_lst = get_fiction_list(
+        fiction_name=f_name, fiction_url=f_url, flag=0)
+    # 2.保存小说目录列表
+    flag = save_fiction_lst(fiction_lst)
+    print('更新小说列表完成！！')

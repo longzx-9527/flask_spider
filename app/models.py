@@ -16,6 +16,9 @@ class Fiction(db.Model):
     fiction_img = db.Column(db.String)
     fiction_author = db.Column(db.String)
     fiction_comment = db.Column(db.String)
+    update = db.Column(db.String)
+    new_content = db.Column(db.String)
+    new_url = db.Column(db.String)
 
     def __repr__(self):
         return '<fiction %r> ' % self.fiction_name

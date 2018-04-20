@@ -3,15 +3,17 @@
 # @Date: 2018-03-20 20:45:37
 # @cnblog:http://www.cnblogs.com/lonelyhiker/
 
-from flask import render_template, request, redirect, url_for
-
-from app.xiaoshuo.xiaoshuoSpider import down_fiction_lst, down_fiction_content
-from app.xiaoshuo.spider_tools import get_one_page
-from . import fiction
 import requests
 from bs4 import BeautifulSoup
-from app.models import Fiction, Fiction_Content, Fiction_Lst
+from flask import redirect, render_template, request, url_for
+
 from app import db
+from app.models import Fiction, Fiction_Content, Fiction_Lst
+from app.xiaoshuo.spider_tools import get_one_page
+from app.xiaoshuo.xiaoshuoSpider import (down_fiction_content,
+                                         down_fiction_lst, update_fiction_lst)
+
+from . import fiction
 
 
 @fiction.route('/book/')
@@ -64,8 +66,12 @@ def fiction_content():
     next_id = id + 1
     fiction_pre = Fiction_Lst().query.filter_by(
         id=pre_id).first().fiction_lst_url
-    fiction_next = Fiction_Lst().query.filter_by(
-        id=next_id).first().fiction_lst_url
+
+    fn = Fiction_Lst().query.filter_by(id=next_id).first()
+    if fn is None:
+        fiction_next = None
+    else:
+        fiction_next = fn.fiction_lst_url
     f_id = fic_id
     # 获取具体章节内容
     fiction_contents = Fiction_Content().query.filter_by(
@@ -152,3 +158,12 @@ def f_search():
             fiction=fiction,
             fiction_lst=fiction_lst,
             fiction_name=fiction.fiction_name)
+
+
+@fiction.route('/update/fiction/')
+def update_fiction():
+    f_url = request.args.get('f_url')
+    f_name = request.args.get('f_name')
+    update_fiction_lst(f_name=f_name, f_url=f_url)
+    print('更新列表完毕！！！！')
+    return redirect(url_for('fiction.book_lst', f_id=f_url.split('/')[-2]))

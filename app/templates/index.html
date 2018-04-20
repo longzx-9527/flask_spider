@@ -4,43 +4,18 @@
   <!-- 文章主题开始 -->
   <div class="container-fluid">
       <div class="row">
-  
-        <!-- 左边栏 -->
-        <div class="col-md-3">
-  
-          <div class="list-group">
-            <a href="#" class="list-group-item active">猜你喜欢</a>
-              <!-- 获取排名前十的文章 -->
-              {% for article in articles %}
-              <div class="list-group-item">
-                <div class="media">
-                  <a href="#" class="pull-left"><img src="{{article.img}}" alt="{{article.img_title}}"/></a>
-                  <div class="media-body">
-                     {{article.title}}
-                     <br>
-                      <br>
-                      <p>
-                          {{article.date}} &nbsp;&nbsp; 评论({{article.plnum}})
-                      </p>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-
-          </div>
-        </div>
         
         <!-- 右边栏 -->
-        <div class="col-md-9">
+        <div class="col-md-offset-2 col-md-8">
          
           <div class="panel panel-default">
             <div class="panel-body">
               <h3 class="panel-title"><p class="text-success">热门排行</p></h3>
               <hr>
-              {% for article in articles %}
+              {% for article in articles[:8] %}
               <div class="media">
                   <div class="media-body">
-                      <span class="label label-primary">1</span>
+                      <span class="label label-primary">{{loop.index}}</span>
                       <a href="{{article.url}}">{{article.title}}</a>
                       <span class="pull-right"><p class="text-danger"><span class="glyphicon glyphicon-heart"></span>&nbsp;喜欢&nbsp;({{article.sc}})&nbsp;&nbsp;</p></span>
                   </div>
@@ -52,20 +27,20 @@
             {% for article in articles %}
             <div class="panel panel-default">
               <div class="panel-heading">
-                  <a href="{{article.url}}">[置顶]{{article.title}}</a>
+                  <a href="/article/{{article.path}}">[置顶]{{article.title}}</a>
               </div>
               <div class="panel-body">
                   <div class="media">
-                    <a href="#" class="pull-left"><img src="{{article.img}}" alt="{{article.img_tile}}"/></a>
+                    <a href="/article/{{article.path}}" class="pull-left"><img width="200" height="123" src="{{article.img}}" alt="{{article.img_tile}}"/></a>
                     <div class="media-body">
-                       {{article.info}}...
+                       {{article.content|safe}}...
                     </div>
                   </div>
                   <p >
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>喜欢({{article.sc}})&nbsp;&nbsp;</a></span>
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-heart"></span>评论({{article.plnum}})&nbsp;&nbsp;</a></span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-eye-open"></span>浏览({{article.eyes}})&nbsp;&nbsp;</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-time"></span>{{article.time}}&nbsp;&nbsp;</span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>喜欢(0)&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-heart"></span>评论(2)&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><span class="glyphicon glyphicon-eye-open"></span>浏览(32)&nbsp;&nbsp;</span>
+                    <span class="pull-right"><span class="glyphicon glyphicon-time"></span>{{article.date}}&nbsp;&nbsp;</span>
                     <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-user"></span>{{article.author}}&nbsp;&nbsp;</a></span>
                   </p>
               </div>
@@ -74,11 +49,9 @@
 
             <ul class="pagination">
               <li><a href="#">&laquo;</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
+              {% for article in articles %}
+              <li><a href="{{article.href}}">{{loop.index}}</a></li>
+              {% endfor %}
               <li><a href="#">&raquo;</a></li>
           </ul><br>
             

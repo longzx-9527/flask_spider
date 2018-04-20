@@ -3,6 +3,8 @@
 {%- block styles %}
 {{super()}}
  <link href="{{url_for('static',filename='css/mycss.css',_external=True)}}" rel="stylesheet">
+ <link href="{{url_for('static',filename='css/xscss.css')}}" rel="stylesheet">
+
 {%- endblock styles %}
 
 {% block navbar %}
@@ -14,15 +16,15 @@
         </div>
     <div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
+            <li class="active"><a href="/">首页</a></li>
             <li ><a href="#">技术杂谈</a></li>
             <li><a href="#">人生感悟</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Python <b class="caret"></b>
+                    个人爱好 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">jmeter</a></li>
+                    <li><a href="/book/">小说频道</a></li>
                     <li><a href="#">EJB</a></li>
                     <li><a href="#">Jasper Report</a></li>
                     <li class="divider"></li>
@@ -34,8 +36,13 @@
             <li><a href="/book/">小说频道</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li> 
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+            <li><a href="/wrarticle/"><span class="glyphicon glyphicon-user"></span>写文章</a></li> 
+            {% if user %}
+            <li><h3>Hello,{{user.name}}</h3></li> 
+            {% else %}
+          <li><a href="{{url_for('main.login_up')}}"><span class="glyphicon glyphicon-user"></span> 注册</a></li> 
+          <li><a href="{{ url_for('main.login_in')}}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+          {% endif %}
       </ul> 
     </div>
     </div>
