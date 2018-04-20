@@ -24,19 +24,14 @@
                     个人爱好 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/book/">小说频道</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
+                    <li><a href="{{url_for('fiction.book_index')}}">小说频道</a></li>
+                    <li><a href="#">技术文章下载</a></li>
                 </ul>
             </li>
-            <li><a href="/book/">小说频道</a></li>
+            <li><a href="{{url_for('fiction.book_index')}}">小说频道</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="/wrarticle/"><span class="glyphicon glyphicon-user"></span>写文章</a></li> 
+            <li><a href="{{url_for('main.wrarticle')}}"><span class="glyphicon glyphicon-user"></span>写文章</a></li> 
             {% if user %}
             <li><h3>Hello,{{user.name}}</h3></li> 
             {% else %}
