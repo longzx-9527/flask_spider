@@ -7,7 +7,6 @@ from ..mylogger import logger
 from app import pages
 import requests
 import markdown
-from .mdextension import CodeExtension
 
 
 @main.route('/')
@@ -59,11 +58,9 @@ def wrarticle():
         print('article=', artitle_content)
         print('title', artitle_title)
         print('type=', artitle_type)
-        # artitle_content = markdown2.markdown(artitle_content)
-        configs = {}
-        myext = CodeExtension(configs=configs)
-        artitle_content = markdown.markdown(
-            artitle_content, extensions=[myext])
+        artitle_content = markdown.markdown(artitle_content,
+                                            ['extra', 'codehilite'])
+
         print('article=', artitle_content)
         page = None
         return render_template(
