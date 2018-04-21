@@ -9,31 +9,29 @@
     
              <ol class="breadcrumb">
                 <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-                <li><a href="#">人生感悟</a></li>
-                <li class="active">{{page.title}}</li>
+                <li><a href="#"></a>{{article.article_type}}</li>
+                <li class="active">{{article.article_title}}</li>
             </ol>
     
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>{{page.title}}</h3>
+                    <h3>{{article.article_title}}</h3>
                     <p >
-                      <span ><a href="#"><span class="glyphicon glyphicon-user"></span>{{page.author}}&nbsp;&nbsp;</a></span>
-                      <span class="glyphicon glyphicon-time"></span>{{page.date}}&nbsp;&nbsp;
-                      <span class="glyphicon glyphicon-eye-open"></span>浏览(20)&nbsp;&nbsp;
-                      <span ><a href="#"><span class="glyphicon glyphicon-star"></span>收藏(20)&nbsp;&nbsp;</a></span>
-                      <span ><a href="#"><span class="glyphicon glyphicon-comment"></span>评论(20)&nbsp;&nbsp;</a></span>
+                      <span ><a href="#"><span class="glyphicon glyphicon-user"></span>{{article.article_author}}&nbsp;&nbsp;</a></span>
+                      <span class="glyphicon glyphicon-time"></span>{{article.article_date}}&nbsp;&nbsp;
+                      <span class="glyphicon glyphicon-eye-open"></span>浏览({{article.article_read_cnt}})&nbsp;&nbsp;
+                      <span ><a href="#"><span class="glyphicon glyphicon-star"></span>收藏({{article.article_sc}})&nbsp;&nbsp;</a></span>
+                      <span ><a href="#"><span class="glyphicon glyphicon-comment"></span>评论({{article.article_pl}})&nbsp;&nbsp;</a></span>
                     </p>
                     <hr>
                     <!-- 段落开始 -->
                     <span>
-                        <article id="110" class="post">
-                                {{content|safe}}
-                            </section>
-                            <hr>
-                        </article>
+                        <article class="markdown-body">
+                            {{article.article_text|safe}}
+                          </article>
                     </span>
                        <!-- 评论部分 -->
-                    <form role="form">
+                    <form role="form" >
                         <div class="form-group">
                         <label for="name">发表你的评论吧</label>
                         <hr>
@@ -64,56 +62,22 @@
           <div class="col-md-4">
             <div class="list-group">
               <a href="#" class="list-group-item active">猜你喜欢</a>
-    
+              {% for article in articles %}
                 <div class="list-group-item">
                   <div class="media">
-                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
+
+                    <a href="/get_article/{{article.article_id}}" class="pull-left"><img width="120" height="90" src="{{article.article_url}}" /></a>
                     <div class="media-body">
-                       <p>Python爬虫实战一之爬取糗事百科段子</p>
+                       <a href="/get_article/{{article.article_id}}"><p>{{article.article_title}}</p></a>
                       <p>
-                        2018.1.22 评论(2018)
+                        {{article.article_date}} 评论({{article.article_pl}})
                       </p>
                     </div>
+                   
                   </div>
                 </div>
-    
-                <div class="list-group-item">
-                  <div class="media">
-                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
-                    <div class="media-body">
-                       <p>Python爬虫实战一之爬取糗事百科段子</p>
-                      <p>
-                        2018.1.22 评论(2018)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="list-group-item">
-                  <div class="media">
-                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
-                    <div class="media-body">
-                       <p>Python爬虫实战一之爬取糗事百科段子</p>
-                      <p>
-                        2018.1.22 评论(2018)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="list-group-item">
-                  <div class="media">
-                    <a href="#" class="pull-left"><img src="https://cuiqingcai.com/wp-content/themes/Yusi/timthumb.php?src=https://qiniu.cuiqingcai.com/wp-content/uploads/2015/02/wallpaper_5228661.jpg&h=64&w=100&q=90&zc=1&ct=1" alt="Python爬虫实战一之爬取糗事百科段子"/></a>
-                    <div class="media-body">
-                       <p>Python爬虫实战一之爬取糗事百科段子</p>
-                      <p>
-                        2018.1.22 评论(2018)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                
+                {% endfor %}
+               
             </div>
           </div>
     

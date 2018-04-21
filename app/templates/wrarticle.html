@@ -7,15 +7,22 @@
                 <form role="form" action={{url_for('main.wrarticle')}} method="post">
                 <div class="form-group">
                     <label for="name">文章标题</label>
-                    <input type="text" neme="title" class="form-control" placeholder="那是很久很久以前">
+                    <input type="text" name="article_title" class="form-control" placeholder="那是很久很久以前"/>
                     <br>
+                </div>
+                <div class="form-group">
+                    <label for="name">插图地址</label>
+                    <input type="text" name="article_url" class="form-control" placeholder="图片插图地址"/>
+                    <br>
+                </div>
+                <div class="form-group">
                     <div>
                         <label for="name">文章分类</label>
                         <label class="checkbox-inline">
                             <input type="radio" name="f_type"  value="1" checked> 技术
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" name="f_type" value="2">生活
+                            <input type="radio" name="f_type" value="2"/>生活
                         </label>
                     </div>
                     <br>

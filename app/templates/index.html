@@ -16,8 +16,8 @@
               <div class="media">
                   <div class="media-body">
                       <span class="label label-primary">{{loop.index}}</span>
-                      <a href="{{article.url}}">{{article.title}}</a>
-                      <span class="pull-right"><p class="text-danger"><span class="glyphicon glyphicon-heart"></span>&nbsp;喜欢&nbsp;({{article.sc}})&nbsp;&nbsp;</p></span>
+                      <a href="/get_article/{{article.article_id}}">{{article.article_title}}</a>
+                      <span class="pull-right"><p class="text-danger"><span class="glyphicon glyphicon-heart"></span>&nbsp;喜欢&nbsp;({{article.article_sc}})&nbsp;&nbsp;</p></span>
                   </div>
               </div>
               {% endfor %}
@@ -27,21 +27,21 @@
             {% for article in articles %}
             <div class="panel panel-default">
               <div class="panel-heading">
-                  <a href="/article/{{article.path}}">[置顶]{{article.title}}</a>
+                  <a href="/get_article/{{article.article_id}}">[置顶]{{article.title}}</a>
               </div>
               <div class="panel-body">
                   <div class="media">
-                    <a href="/article/{{article.path}}" class="pull-left"><img width="200" height="123" src="{{article.img}}" alt="{{article.img_tile}}"/></a>
+                    <a href="/get_article/{{article.article_id}}" class="pull-left"><img width="200" height="123" src="{{article.article_url}}"/></a>
                     <div class="media-body">
-                       {{article.content|safe}}...
+                       {{article.article_text[:260]}}...
                     </div>
                   </div>
                   <p >
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>喜欢(0)&nbsp;&nbsp;</a></span>
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-heart"></span>评论(2)&nbsp;&nbsp;</a></span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-eye-open"></span>浏览(32)&nbsp;&nbsp;</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-time"></span>{{article.date}}&nbsp;&nbsp;</span>
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-user"></span>{{article.author}}&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>1喜欢({{article.article_sc}})&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-heart"></span>评论({{article.article_pl}})&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><span class="glyphicon glyphicon-eye-open"></span>浏览({{article.article_read_cnt}})&nbsp;&nbsp;</span>
+                    <span class="pull-right"><span class="glyphicon glyphicon-time"></span>{{article.article_date}}&nbsp;&nbsp;</span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-user"></span>{{article.article_author}}&nbsp;&nbsp;</a></span>
                   </p>
               </div>
             </div>
@@ -49,8 +49,8 @@
 
             <ul class="pagination">
               <li><a href="#">&laquo;</a></li>
-              {% for article in articles %}
-              <li><a href="{{article.href}}">{{loop.index}}</a></li>
+              {% for article in articles[:5] %}
+              <li><a href="/get_article/{{article.article_id}}">{{loop.index}}</a></li>
               {% endfor %}
               <li><a href="#">&raquo;</a></li>
           </ul><br>

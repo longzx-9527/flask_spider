@@ -5,6 +5,7 @@ body {
     position: relative;
     height: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    
   }
   
 #footer{
@@ -44,7 +45,4 @@ body {
 #footer .footer-c p a{
     color: #fff;
 }
-p code {  
-    white-space: normal;  
-    word-break: break-all;  
-} 
+

@@ -4,7 +4,23 @@
 {{super()}}
  <link href="{{url_for('static',filename='css/mycss.css',_external=True)}}" rel="stylesheet">
  <link href="{{url_for('static',filename='css/xscss.css')}}" rel="stylesheet">
-
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="{{url_for('static',filename='css/github-markdown.css')}}">
+ <style>
+     .markdown-body {
+         box-sizing: border-box;
+         min-width: 200px;
+         max-width: 980px;
+         margin: 0 auto;
+         padding: 45px;
+     }
+ 
+     @media (max-width: 767px) {
+         .markdown-body {
+             padding: 15px;
+         }
+     }
+ </style>
 {%- endblock styles %}
 
 {% block navbar %}
@@ -32,8 +48,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
             <li><a href="{{url_for('main.wrarticle')}}"><span class="glyphicon glyphicon-user"></span>写文章</a></li> 
-            {% if user %}
-            <li><h3>Hello,{{user.name}}</h3></li> 
+            {% if current_user.is_authenticated %}
+            <li><a>Hello,{{current_user.user_name}}</a></li> 
+            <li><a href="{{url_for('main.login_out')}}"><span class="glyphicon glyphicon-user"></span>登出</a></li> 
             {% else %}
           <li><a href="{{url_for('main.login_up')}}"><span class="glyphicon glyphicon-user"></span> 注册</a></li> 
           <li><a href="{{ url_for('main.login_in')}}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
