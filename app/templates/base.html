@@ -7,6 +7,24 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="{{url_for('static',filename='css/github-markdown.css')}}">
  <style>
+    
+    html, body, .wrap { height:100%; }
+    .wrap {
+        height:auto; 
+        min-height:100%; 
+        _height:100%; 
+    }
+    .main { padding-bottom:80px; }
+    .footer { 
+        position:relative; 
+        height:80px; 
+        line-height: 80px; 
+        margin-top:-80px; 
+        background:#333; 
+        color:#fff; 
+        font-size:16px; 
+        text-align:center; 
+    }
      .markdown-body {
          box-sizing: border-box;
          min-width: 200px;
@@ -32,9 +50,21 @@
         </div>
     <div>
         <ul class="nav navbar-nav">
+            {% if flag == 1 %}
             <li class="active"><a href="/">首页</a></li>
-            <li ><a href="#">技术杂谈</a></li>
-            <li><a href="#">人生感悟</a></li>
+            {% else%}
+            <li><a href="/">首页</a></li>
+            {% endif %}
+            {% if flag == 2 %}
+            <li class="active"><a href="{{url_for('main.get_technology')}}">技术杂谈</a></li>
+            {% else%}
+            <li ><a href="{{url_for('main.get_technology')}}">技术杂谈</a></li>
+            {% endif %}
+            {% if flag == 3 %}
+            <li class="active"><a href="{{url_for('main.get_life')}}">人生感悟</a></li>
+            {% else%}
+            <li ><a href="{{url_for('main.get_life')}}">人生感悟</a></li>
+            {% endif %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     个人爱好 <b class="caret"></b>
@@ -44,11 +74,16 @@
                     <li><a href="#">技术文章下载</a></li>
                 </ul>
             </li>
+            {% if flag == 4 %}
+            <li class="active"><a href="{{url_for('fiction.book_index')}}">小说频道</a></li>
+            {% else%}
             <li><a href="{{url_for('fiction.book_index')}}">小说频道</a></li>
+            {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="{{url_for('main.wrarticle')}}"><span class="glyphicon glyphicon-user"></span>写文章</a></li> 
             {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('main.wrarticle')}}"><span class="glyphicon glyphicon-user"></span>写点什么吧</a></li> 
+            <li><a href="{{url_for('main.manage_article')}}"><span class="glyphicon glyphicon-user"></span>管理文章</a></li> 
             <li><a>Hello,{{current_user.user_name}}</a></li> 
             <li><a href="{{url_for('main.login_out')}}"><span class="glyphicon glyphicon-user"></span>登出</a></li> 
             {% else %}
@@ -59,39 +94,29 @@
     </div>
     </div>
 </nav>
+<div class="wrap">
+    <div class="main">
 {% endblock navbar %}
 
 {% block content %}
-<!-- 底部 -->
-
-<div id="footer">
-    <div class="footer-c">
-        <div class="footer-nav">
-            <ul>
-                <li><a href="#">关于我们</a></li>
-                <li><a href="#">联系我们</a></li>
-                <li><a href="#">广告服务</a></li>
-                <li><a href="#">免责声明</a></li>
-            </ul>
-        </div>
-        <p>© 2012-2016 jqhtml.com · 湘ICP备16001111号-1  · 托管于 阿里云 & 又拍云</p>
-        <p>
-        <script>
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "//hm.baidu.com/hm.js?8319b3b0fd09fd3d636159d4e490cdd8";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-        </p>
-        <script>
-      // SyntaxHighlighter.defaults['html-script'] = false;
-      SyntaxHighlighter.all();
-      </script>
     </div>
 </div>
+<!-- 底部begin -->
+<div class ="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-offset-4 col-md-8">
+               <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">关于我们</a></li>
+                  <li ><a href="#">联系我们</a></li>
+                  <li><a href="#">广告服务</a></li>
+                  <li><a href="#">免责声明</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- 底部end -->
 {% endblock %}
 
 

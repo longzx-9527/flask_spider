@@ -88,6 +88,7 @@ class Article(db.Model):
     article_id = db.Column(db.String(20), primary_key=True)
     article_title = db.Column(db.String(100), nullable=False)
     article_text = db.Column(db.Text)
+    article_summary = db.Column(db.String(255))
     article_read_cnt = db.Column(db.Integer, default=0)
     article_sc = db.Column(db.Integer, default=0)
     article_pl = db.Column(db.Integer, default=0)

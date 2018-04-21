@@ -20,7 +20,7 @@ from . import fiction
 def book_index():
     fictions = Fiction().query.all()
     print(fictions)
-    return render_template('fiction_index.html', fictions=fictions)
+    return render_template('fiction_index.html', fictions=fictions, flag=4)
 
 
 @fiction.route('/book/list/<f_id>')
@@ -48,7 +48,8 @@ def book_lst(f_id):
         fictions=fictions,
         fiction=fiction,
         fiction_lst=fiction_lst,
-        fiction_name=fiction_name)
+        fiction_name=fiction_name,
+        flag=4)
 
 
 @fiction.route('/book/fiction/')
@@ -94,7 +95,8 @@ def fiction_content():
         fiction_name=fiction_name,
         fiction_pre=fiction_pre,
         fiction_next=fiction_next,
-        fiction_content=fiction_content)
+        fiction_content=fiction_content,
+        flag=4)
 
 
 @fiction.route('/book/search/')
@@ -130,7 +132,8 @@ def f_search():
                 fictions=fictions,
                 fiction=fiction,
                 fiction_lst=fiction_lst,
-                fiction_name=fiction.fiction_name)
+                fiction_name=fiction.fiction_name,
+                flag=4)
         else:
             fiction_name = fiction_lst[0].fiction_name
             return render_template(
@@ -138,7 +141,8 @@ def f_search():
                 fictions=fictions,
                 fiction=fiction,
                 fiction_lst=fiction_lst,
-                fiction_name=fiction_name)
+                fiction_name=fiction_name,
+                flag=4)
     else:
         down_fiction_lst(f_name)
         fictions = Fiction().query.all()
@@ -157,7 +161,8 @@ def f_search():
             fictions=fictions,
             fiction=fiction,
             fiction_lst=fiction_lst,
-            fiction_name=fiction.fiction_name)
+            fiction_name=fiction.fiction_name,
+            flag=4)
 
 
 @fiction.route('/update/fiction/')

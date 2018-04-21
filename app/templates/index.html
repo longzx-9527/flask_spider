@@ -27,17 +27,17 @@
             {% for article in articles %}
             <div class="panel panel-default">
               <div class="panel-heading">
-                  <a href="/get_article/{{article.article_id}}">[置顶]{{article.title}}</a>
+                  <a href="/get_article/{{article.article_id}}">[置顶]{{article.article_title}}</a>
               </div>
               <div class="panel-body">
                   <div class="media">
                     <a href="/get_article/{{article.article_id}}" class="pull-left"><img width="200" height="123" src="{{article.article_url}}"/></a>
                     <div class="media-body">
-                       {{article.article_text[:260]}}...
+                       {{article.article_summary|safe}}...
                     </div>
                   </div>
                   <p >
-                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>1喜欢({{article.article_sc}})&nbsp;&nbsp;</a></span>
+                    <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-star"></span>喜欢({{article.article_sc}})&nbsp;&nbsp;</a></span>
                     <span class="pull-right"><a href="#"><span class="glyphicon glyphicon-heart"></span>评论({{article.article_pl}})&nbsp;&nbsp;</a></span>
                     <span class="pull-right"><span class="glyphicon glyphicon-eye-open"></span>浏览({{article.article_read_cnt}})&nbsp;&nbsp;</span>
                     <span class="pull-right"><span class="glyphicon glyphicon-time"></span>{{article.article_date}}&nbsp;&nbsp;</span>
