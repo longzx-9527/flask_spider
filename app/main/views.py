@@ -70,6 +70,9 @@ def login_out():
 @main.route('/get_article/<article_id>/')
 def get_article(article_id):
     article = Article().query.filter_by(article_id=article_id).first()
+    article.article_read_cnt = article.article_read_cnt + 1
+    db.session.add(article)
+    db.session.commit()
     articles = Article().query.limit(8)
     return render_template('article.html', article=article, articles=articles)
 

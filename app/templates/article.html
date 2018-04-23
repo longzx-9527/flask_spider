@@ -41,7 +41,7 @@
                         <input type="text" class="form-control" id="name" placeholder="请输入邮箱">
                         </div>
                         <div class="form-group">
-                        <textarea class="form-control" rows="3" placeholder="说点什么吧 "></textarea>
+                        <textarea id="mymarkdown" class="form-control" rows="3" placeholder="说点什么吧 "></textarea>
                         </div>
                         <div class="form-group">
                             <button type="button" class="btn btn-primary btn-lg btn-block">发表评论</button>
@@ -52,7 +52,32 @@
                     <br>
                 </div>
               </div>
-    
+                <!-- markdown begin -->
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+              <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+              <script>
+                  new SimpleMDE({
+                    element: document.getElementById("mymarkdown"),
+                    spellChecker: false,
+                    autosave: {
+                        enabled: true,
+                        unique_id: "demo2",
+                    },
+                  });
+                  
+                  </script>
+                  <script>
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                  
+                    ga('create', 'UA-5808021-18', 'auto');
+                    ga('send', 'pageview');
+                  
+                  </script>
+      <!-- markdown end -->
            
               <br>
               <br>

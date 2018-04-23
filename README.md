@@ -12,6 +12,22 @@
     4.建立相关数据库及表
 ```
 
+## 2.安装教程(推荐安装环境：Centos7)
+
+    1.git clone https://github.com/longzx-9527/flask_spider.git
+    2.cd flask_spider
+    3.pip install -r  requirement.txt # 安装依赖
+
+以上，应该安装好了python依赖包。
+接下来是初始化数据：
+    1.首先你应该创建了一个mysql数据库（utf-8格式）,然后修改config.py里面的user、passwd、db
+    2.执行blog.sql创建相关表
+    3.初始化数据库：python manage.py db init
+    4.生成数据库语句：python manage.py db migrate
+    5.创建数据库：python manage.py upgrade
+
+运行：`./start.sh`
+
 ## 2.个人博客首页
 
 ### 2.1 首页界面

@@ -10,7 +10,7 @@ from . import db, login_manager
 
 class Fiction(db.Model):
     __tablename__ = 'fiction'
-    __table_args__ = {"useexisting": True}
+    # __table_args__ = {"useexisting": True}
     id = db.Column(db.Integer, primary_key=True)
     fiction_name = db.Column(db.String)
     fiction_id = db.Column(db.String)
@@ -28,13 +28,13 @@ class Fiction(db.Model):
 
 class Fiction_Lst(db.Model):
     __tablename__ = 'fiction_lst'
-    __table_args__ = {"useexisting": True}
+    # __table_args__ = {"useexisting": True}
     id = db.Column(db.Integer, primary_key=True)
-    fiction_name = db.Column(db.String)
-    fiction_id = db.Column(db.String)
-    fiction_lst_url = db.Column(db.String)
-    fiction_lst_name = db.Column(db.String)
-    fiction_real_url = db.Column(db.String)
+    fiction_name = db.Column(db.String(255))
+    fiction_id = db.Column(db.String(255))
+    fiction_lst_url = db.Column(db.String(255))
+    fiction_lst_name = db.Column(db.String(255))
+    fiction_real_url = db.Column(db.String(255))
 
     def __repr__(self):
         return '<fiction_lst %r> ' % self.fiction_name
@@ -42,11 +42,11 @@ class Fiction_Lst(db.Model):
 
 class Fiction_Content(db.Model):
     __tablename__ = 'fiction_content'
-    __table_args__ = {"useexisting": True}
+    # __table_args__ = {"useexisting": True}
     id = db.Column(db.Integer, primary_key=True)
-    fiction_url = db.Column(db.String)
-    fiction_content = db.Column(db.String)
-    fiction_id = db.Column(db.String)
+    fiction_url = db.Column(db.String(255))
+    fiction_content = db.Column(db.Text)
+    fiction_id = db.Column(db.Integer)
 
 
 class User(UserMixin, db.Model):
