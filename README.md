@@ -20,6 +20,7 @@
 
 以上，应该安装好了python依赖包。
 接下来是初始化数据：
+
     1.首先你应该创建了一个mysql数据库（utf-8格式）,然后修改config.py里面的user、passwd、db
     2.执行blog.sql创建相关表
     3.初始化数据库：python manage.py db init
