@@ -12,11 +12,16 @@
     4.建立相关数据库及表
 ```
 
-## 2.安装教程(推荐安装环境：Centos7)
+## 2.安装教程(推荐安装环境：Centos7,python版本要超过3.4)
 
     1.git clone https://github.com/longzx-9527/flask_spider.git
     2.cd flask_spider
-    3.pip install -r  requirement.txt # 安装依赖
+    3.pyvenv  myvenv #虚拟环境
+    4.source venv/bin/activate #激活虚拟环境
+    5.pip install -r  requirement.txt # 安装依赖
+    6.python manage.py db init
+    7.python manage.py db migrate
+    8.python manage.py db upgrade
 
 以上，应该安装好了python依赖包。
 接下来是初始化数据：
