@@ -3,7 +3,9 @@
 # @Date: 2018-03-19 23:44:05
 # @cnblog:http://www.cnblogs.com/lonelyhiker/
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
+from flask import current_app
 
 from . import db, login_manager
 
@@ -82,6 +84,20 @@ class User(UserMixin, db.Model):
     def get_id(self):
         return self.user_id
 
+    def generate_auth_token(self, expiration=3600):
+        #生成令牌字符串token
+        s = Serializer(current_app.config['SECRET_KEY'], expries_in=expiration)
+        return s.dumps({'user_id': self.user_id}).decode('utf-8')
+
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except expression as identifier:
+            return None
+        return User.query.get(data['user_id'])
+
 
 class Article(db.Model):
     __tablename__ = 'article'
@@ -104,7 +120,9 @@ class Comment(db.Model):
     comment_id = db.Column(db.String(20), primary_key=True)
     comment_text = db.Column(db.Text)
     comment_date = db.Column(db.DateTime)
-    user_id = db.Column(db.String(20), nullable=False)
+    comment_name = db.Column(db.String(30))
+    comment_support = db.Column(db.Integer, default=0)
+    comment_oppose = db.Column(db.Integer, default=0)
     article_id = db.Column(db.String(20), nullable=False)
 
 
@@ -124,4 +142,5 @@ class Commparam(db.Model):
 # 加载用户的回调函数
 @login_manager.user_loader
 def load_user(user_id):
+    print('call load_user')
     return User.query.get(user_id)

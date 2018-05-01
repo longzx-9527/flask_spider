@@ -74,7 +74,9 @@ def get_article(article_id):
     db.session.add(article)
     db.session.commit()
     articles = Article().query.limit(8)
-    return render_template('article.html', article=article, articles=articles)
+    comments = Comment().query.filter_by(article_id=article_id).all()
+    return render_template(
+        'article.html', article=article, articles=articles, comments=comments)
 
 
 @main.route('/wrarticle/', methods=['GET', 'POST'])
@@ -123,7 +125,47 @@ def wrarticle():
         return render_template('wrarticle.html')
 
 
+@main.route('/wrcomment/<article_id>', methods=["POST"])
+def wrcomment(article_id):
+    print('article_id:', article_id)
+    comment_name = request.form.get("name")
+    commentary = request.form.get("commentary")
+    commentary = markdown.markdown(commentary, ['extra', 'codehilite'])
+    comment_id = generate_id('comment')
+    comment_date = strftime('%Y-%m-%d %H:%M:%S')
+    print('comment:', commentary)
+    comment = Comment(
+        comment_id=comment_id,
+        comment_text=commentary,
+        comment_date=comment_date,
+        comment_name=comment_name,
+        article_id=article_id)
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for("main.get_article", article_id=article_id))
+
+
+@main.route('/comment_oppose/<comment_id>')
+def comment_oppose(comment_id):
+    comment = Comment().query.filter_by(comment_id=comment_id).first()
+    comment.comment_oppose += 1
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for("main.get_article", article_id=comment.article_id))
+
+
+@main.route('/comment_support/<comment_id>')
+def comment_support(comment_id):
+    print('comment_id:', comment_id)
+    comment = Comment().query.filter_by(comment_id=comment_id).first()
+    comment.comment_support += 1
+    db.session.add(comment)
+    db.session.commit()
+    return redirect(url_for("main.get_article", article_id=comment.article_id))
+
+
 @main.route('/del_article/<article_id>/')
+@login_required
 def del_article(article_id):
     print('article_id=', article_id)
     article = Article().query.filter_by(article_id=article_id).first()

@@ -31,25 +31,45 @@
                           </article>
                     </span>
                        <!-- 评论部分 -->
-                    <form role="form" >
+                    <form role="form"  action="/wrcomment/{{article.article_id}}" method="post">
                         <div class="form-group">
                         <label for="name">发表你的评论吧</label>
                         <hr>
-                        <input type="text" class="form-control" id="name" placeholder="请输入昵称">
+                        <input type="text" class="form-control" name="name" placeholder="请输入昵称">
                         </div>
                         <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="请输入邮箱">
+                        <input type="text" class="form-control" name="email" placeholder="请输入邮箱">
                         </div>
                         <div class="form-group">
-                        <textarea id="mymarkdown" class="form-control" rows="3" placeholder="说点什么吧 "></textarea>
+                        <textarea id="mymarkdown" class="form-control" name="commentary" rows="3" placeholder="说点什么吧 "></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">发表评论</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">发表评论</button>
                         </div>
                     </form>
                     <!-- 段落结束 -->
                     <br>
                     <br>
+                    <!-- 评论部分 -->
+                    <div class="list-group">
+                      <a href="#" class="list-group-item active">
+                          <h4 class="list-group-item-heading">
+                              评论列表
+                          </h4>
+                      </a>
+                      {% for comment in comments%}
+                      <div href="#" class="list-group-item">
+                          <p>#{{loop.index}}楼 {{comment.comment_date}} {{comment.comment_name}} </p>
+                          <p>
+                              {{comment.comment_text|safe}}
+                          <p class="label"><a href = "/comment_support/{{comment.comment_id}}">支持({{comment.comment_support}})</a></p>
+                          <p class="label"><a href= "/comment_oppose/{{comment.comment_id}}">反对({{comment.comment_oppose}})</a></p>
+                          
+                        </p>
+                      </div>
+                      {% endfor %}
+                      </div>
+
                 </div>
               </div>
                 <!-- markdown begin -->
@@ -77,8 +97,8 @@
                     ga('send', 'pageview');
                   
                   </script>
-      <!-- markdown end -->
-           
+                  <!-- markdown end -->
+                 
               <br>
               <br>
     

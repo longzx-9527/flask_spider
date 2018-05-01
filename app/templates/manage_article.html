@@ -19,7 +19,7 @@
               <tbody>
                 {% for article in articles %}
                 <tr>
-                  <td>{{article.article_title}} ({{article.article_date}})</td>
+                  <td><a href="/get_article/{{article.article_id}}">{{article.article_title}}</a> ({{article.article_date}})</td>
                   <td>发布</td>
                   <td>{{article.article_pl}}</td>
                   <td>{{article.article_read_cnt}}</td>
