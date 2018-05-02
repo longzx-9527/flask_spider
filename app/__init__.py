@@ -29,5 +29,10 @@ def create_app(config_name):
     app.register_blueprint(main_blueprint)
     from .fiction import fiction as fiction_blueprint
     app.register_blueprint(fiction_blueprint)
+    #初始化api
+    from .api import api
+    api.init_app(app)
+
+    print('url_map:', app.url_map)
 
     return app
