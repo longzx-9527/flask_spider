@@ -32,6 +32,8 @@ def create_app(config_name):
     #初始化api
     from .api import api
     api.init_app(app)
+    from .api import auth_api as authapi_blueprint
+    app.register_blueprint(authapi_blueprint)
 
     print('url_map:', app.url_map)
 

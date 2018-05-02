@@ -7,7 +7,7 @@ from flask import (current_app, make_response, redirect, render_template,
 from flask_login import login_required, current_user, login_user, logout_user
 
 from . import main
-from app.models import User, Article, Comment, db
+from ..models import User, Article, Comment, db
 from ..mylogger import logger
 from .forms import LoginForm, RegisterForm
 from ..tools import generate_id
@@ -15,6 +15,7 @@ from ..tools import generate_id
 
 @main.route('/')
 def index():
+    logger.info('index')
     articles = Article().query.all()
     print(articles)
     return render_template('index.html', articles=articles, flag=1)
