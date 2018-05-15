@@ -35,6 +35,4 @@ def create_app(config_name):
     from .api import auth_api as authapi_blueprint
     app.register_blueprint(authapi_blueprint)
 
-    print('url_map:', app.url_map)
-
     return app

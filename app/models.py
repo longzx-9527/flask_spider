@@ -126,6 +126,21 @@ class Comment(db.Model):
     article_id = db.Column(db.String(20), nullable=False)
 
 
+class Task(db.Model):
+    __tablename__ = "task"
+    task_id = db.Column(db.String(20), primary_key=True)
+    task_name = db.Column(db.String(50), nullable=False)
+    start_dt = db.Column(db.String(16))
+    next_dt = db.Column(db.String(16))
+    content = db.Column(db.String(200))
+    stat = db.Column(db.String(10))
+    remind = db.Column(db.String(10))
+    article_id = db.Column(db.String(20))
+    user_id = db.Column(db.String(20))
+    emails = db.Column(db.String(200))
+    stage = db.Column(db.Integer, default=1)
+
+
 # 公共参数表
 class Commparam(db.Model):
     __tablename__ = 'commparam'

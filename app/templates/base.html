@@ -79,6 +79,11 @@
             {% else%}
             <li><a href="{{url_for('fiction.book_index')}}">小说频道</a></li>
             {% endif %}
+            {% if flag == 5 %}
+            <li class="active"><a href="{{url_for('main.tasks')}}">学习计划</a></li>
+            {% else%}
+            <li><a href="{{url_for('main.tasks')}}">学习计划</a></li>
+            {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
             {% if current_user.is_authenticated %}

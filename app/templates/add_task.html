@@ -4,39 +4,33 @@
   <div class="container-fluid">
         <div class="row">
            <div class="col-md-offset-2 col-md-8">
-                <form role="form" action={{url_for('main.wrarticle')}} method="post">
+                <form role="form" action={{url_for('main.add_task')}} method="post">
                 <div class="form-group">
-                    <label for="name">文章标题</label>
-                    <input type="text" name="article_title" class="form-control" placeholder="那是很久很久以前"/>
+                    <label for="name">任务名称</label>
+                    <input type="text" name="task_name" class="form-control" placeholder="学习计划"/>
                     <br>
                 </div>
+
                 <div class="form-group">
-                    <label for="name">插图地址</label>
-                    <input type="text" name="article_url" class="form-control" placeholder="图片插图地址"/>
+                    <label for="name">邮箱地址</label>
+                    <input type="text" name="emails" class="form-control" placeholder="发送提醒到邮箱"/>
                     <br>
                 </div>
+                
                 <div class="form-group">
                     <div>
-                        <label for="name">文章分类</label>
+                        <label for="name">提醒类型</label>
                         <label class="checkbox-inline">
-                            <input type="radio" name="f_type"  value="1" checked> 技术
+                            <input type="radio" name="t_type"  value="1" checked> 每日提醒
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" name="f_type" value="2"/>生活
-                        </label>
-                    </div>
-                    <div>
-                        <label for="name">是否复习</label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="f_notice"  value="1" checked> 是
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" name="f_notice" value="2"/>否
+                            <input type="radio" name="t_type" value="2"/>曲线提醒
                         </label>
                     </div>
+                    
                     <br>
-                    <textarea id="mymarkdown" name="article_content"></textarea>
-                    <button type="submit" class="btn btn-primary">发布文章</button>
+                    <textarea id="mymarkdown" name="task_content"></textarea>
+                    <button type="submit" class="btn btn-primary">发布任务</button>
                 </div>
                 </form>
                 

@@ -1,13 +1,13 @@
 import re
 import markdown
 import requests
-from time import strftime
+from datetime import datetime, timedelta
 from flask import (current_app, make_response, redirect, render_template,
                    request, url_for, flash)
 from flask_login import login_required, current_user, login_user, logout_user
 
 from . import main
-from ..models import User, Article, Comment, db
+from ..models import User, Article, Comment, Task, db
 from ..mylogger import logger
 from .forms import LoginForm, RegisterForm
 from ..tools import generate_id
@@ -78,6 +78,55 @@ def get_article(article_id):
     comments = Comment().query.filter_by(article_id=article_id).all()
     return render_template(
         'article.html', article=article, articles=articles, comments=comments)
+
+
+@main.route('/tasks/')
+@login_required
+def tasks():
+    tasks = Task().query.filter_by(user_id=current_user.user_id).all()
+    return render_template('manage_task.html', tasks=tasks)
+
+
+@main.route('/add_task/', methods=['GET', 'POST'])
+@login_required
+def add_task():
+    if request.method == 'POST':
+        task_name = request.form.get('task_name')
+        emails = request.form.get('eamils')
+        t_type = request.form.get('t_type')
+        task_content = request.form.get('task_content')
+        task_content = markdown.markdown(task_content, ['extra', 'codehilite'])
+        task_id = generate_id('task')
+        user_id = current_user.user_id
+        start_dt = datetime.now().date()
+        next_dt = datetime.now().date() + timedelta(days=1)
+        task = Task(
+            task_id=task_id,
+            task_name=task_name,
+            start_dt=str(start_dt),
+            next_dt=str(next_dt),
+            content=task_content,
+            user_id=user_id,
+            stat='进行中',
+            remind=t_type)
+        db.session.add(task)
+        db.session.commit()
+        print('add task finished')
+        tasks = Task().query.filter_by(user_id=user_id).all()
+        return render_template('manage_task.html', tasks=tasks)
+    else:
+        return render_template('add_task.html')
+
+
+@main.route('/del_task/<task_id>/')
+@login_required
+def del_task(task_id):
+    task = Task().query.filter_by(task_id=taskid).first()
+    db.session.delete(task)
+    db.session.commit()
+    print('del task finished')
+    tasks = Task().query.filter_by(user_id=user_id).all()
+    return render_template('manage_task.html', tasks=tasks)
 
 
 @main.route('/wrarticle/', methods=['GET', 'POST'])
@@ -168,9 +217,10 @@ def comment_support(comment_id):
 @main.route('/del_article/<article_id>/')
 @login_required
 def del_article(article_id):
-    print('article_id=', article_id)
     article = Article().query.filter_by(article_id=article_id).first()
     db.session.delete(article)
+    comments = Comment().query.filter_by(article_id=article_id).delete(
+        synchronize_session=False)
     db.session.commit()
     print('删除文章成功!!!!')
     return redirect(url_for('main.manage_article'))

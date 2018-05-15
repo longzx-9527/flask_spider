@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+   {% block content %}
+    
+  <!-- 文章主题开始 -->
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+                <br>
+                <div class="list-group">
+                        <a href="#" class="list-group-item active">
+                            <h6 class="list-group-item-heading">
+                                管理计划
+                            </h6>
+                        </a>
+                        <a href="/add_task/" class="list-group-item">
+                            <p class="list-group-item-text">
+                                添加计划
+                            </p>
+                        </a>
+                </div>
+        </div>
+        <!-- 右边栏 -->
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <caption>学习任务计划表</caption>
+                <thead>
+                    <tr>
+                        <th>任务编号</th>
+                        <th>任务名称</th>
+                        <th>开始时间</th>
+                        <th>下次时间</th>
+                        <th>任务状态</th>
+                        <th>提醒类型</th>
+                        <th>操作标志</th>
+                    </tr>
+                </thead>
+              <tbody>
+                {% for task in tasks %}
+                <tr>
+                  <td>{{loop.index}}</td>
+                  {% if task.article_id %}
+                  <td><a href="/get_article/{{task.article_id}}">{{task.task_name}}</a></td>
+                  {% else %}
+                  <td>{{task.task_name}}</td>
+                  {% endif %}
+                  <td>{{task.start_dt}}</td>
+                  <td>{{task.next_dt}}</td>
+                  <td>{{task.stat}}</td>
+                  <td>
+                      {% if task.remind == '1' %}
+                      每日提醒
+                      {% else %}
+                      曲线提醒
+                      {% endif %}
+                    </td>
+                  <td>
+                      <a href="/del_task/{{task.task_id}}/">删除</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>  
+        </div>
+      </div>
+    </div>
+    <!-- 文章主题结束 -->
+    {{super()}}
+    {% endblock %}
+
+   
