@@ -4,4 +4,4 @@ from flask import Blueprint
 main = Blueprint(name='main', import_name=__name__)
 
 # 在这个位置导入是为了防止循环导入依赖问题
-from . import views, errors, tools
+from . import views, errors
