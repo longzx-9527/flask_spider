@@ -1,13 +1,14 @@
 # 基于flask+requests个人博客系统
 
+[博客地址](http://47.96.119.139)
+
 ## 1.基本环境搭建
 
 ```python
     1.本人使用的系统是 Centos7
-    2.flask环境系统部署
+    2.python环境
         2.1 安装python3.6
         2.2 安装pip工具
-        2.3 pip install -r requirements.txt # 根据文件进行包安装
     3.安装mysql数据库 使用的是mysql 5.7 charset=utf8
     4.建立相关数据库及表
 ```
@@ -19,18 +20,14 @@
     3.pyvenv  myvenv #虚拟环境
     4.source venv/bin/activate #激活虚拟环境
     5.pip install -r  requirement.txt # 安装依赖
-    6.python manage.py db init
-    7.python manage.py db migrate
-    8.python manage.py db upgrade
 
 以上，应该安装好了python依赖包。
 接下来是初始化数据：
 
-    1.首先你应该创建了一个mysql数据库（utf-8格式）,然后修改config.py里面的user、passwd、db
-    2.执行blog.sql创建相关表
-    3.初始化数据库：python manage.py db init
-    4.生成数据库语句：python manage.py db migrate
-    5.创建数据库：python manage.py upgrade
+    1.首先你应该创建了一个blog数据库（utf-8格式）,然后修改config.py里面的user、passwd、db
+    2.初始化数据库：python manage.py db init
+    3.生成数据库语句：python manage.py db migrate
+    4.创建数据库：python manage.py upgrade
 
 运行：`./start.sh`
 
