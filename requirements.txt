@@ -46,7 +46,7 @@ pickleshare==0.7.4
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
 pudb==2017.1.4
-Pygments==2.2.0
+Pygments==2.7.4
 pylint==1.8.4
 PyMySQL==0.8.0
 python-dateutil==2.6.1
