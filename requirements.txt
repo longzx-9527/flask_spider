@@ -27,7 +27,7 @@ greenlet==0.4.13
 gunicorn==19.7.1
 html5lib==1.0.1
 idna==2.6
-ipython==6.2.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 isort==4.3.4
 itsdangerous==0.24
